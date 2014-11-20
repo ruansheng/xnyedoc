@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>登录</title>
+	<style type="text/css">
+		*{margin:0px;padding:0px;}
+		.content{width:500px;height:600px;margin:0 auto;background:#F8F8FF;}
+		#code{width:100px;height:30px;}	
+</style>
+</head>
+<body>
+	<div class="content">
+		<form action="/index.php/Login/doLogin" method="POST">
+			<input type="text" placehoddler="账号"/><br/><br/>
+			<input type="password" placehoddler="密码"/><br/><br/>
+			<input type="code" placehoddler="验证码"/><br/><br/>
+			<img src="/index.php/Login/verify" onClick="changeCode()" id="code"/><br/><br/>
+			<input type="submit" value="登录"/><br/><br/>
+		</form>
+	</div>
+	<script type="text/javascript">
+		function changeCode(){
+			var code=document.getElementById('code');
+			var src=code.value;
+			code.src=src+Date();
+		}
+	</script>
+</body>
+</html>
