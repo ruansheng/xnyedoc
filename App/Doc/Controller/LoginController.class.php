@@ -21,7 +21,29 @@ class LoginController extends Controller {
 	 * /index.php/Doc/Login/doLogin
 	 */
 	public function doLogin(){
-		
+		$data=I('post.');
+		if(isset($data['username'])&&isset($data['password'])&&isset($data['code'])){
+			$verify = new \Think\Verify();
+			if($verify->check($data['code'])){
+				$User=D('User','Logic');
+				if($User->create($data)){
+					$userId=$User->doLogin($data);
+					if($userId){
+						session(array('name'=>'user_id','expire'=>3600*24*10));  //seession有效期为10天
+						session('name',$userId);
+						$this->redirect('Index/index');
+					}else{
+						$this->redirect('Login/index');
+					}
+				}else{
+					$this->redirect('Login/index');
+				}
+			}else{
+				$this->redirect('Login/index');
+			}			
+		}else{
+			$this->redirect('Login/index');
+		}
 	}
 	
 	/**
@@ -35,5 +57,14 @@ class LoginController extends Controller {
 		$Verify->useNoise = false;
 		$Verify->entry();
 	}
+	
+	/**
+	 *  退出
+	 * /index.php/Doc/Login/logout
+	 */
+	public function logout(){
+		session('name',null);
+	}
+	
 	
 }
