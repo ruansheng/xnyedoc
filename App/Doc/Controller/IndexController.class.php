@@ -9,11 +9,27 @@ use Doc\Controller;
 class IndexController extends Controller\BaseController {
 	
 	/**
-	 *  登录页面
-	 * /index.php/Doc/Login/index
+	 *  头部
+	 * /index.php/Doc/Index/header
+	 */
+	public function header(){
+		$this->display();
+	}
+	
+	/**
+	 *  主面板
+	 * /index.php/Doc/Index/index
 	 */
 	public function index(){
-		echo 'doc';
+		$this->display();
+	}
+	
+	/**
+	 *  左侧
+	 * /index.php/Doc/Index/left
+	 */
+	public function left(){
+		$this->display();
 	}
 	
 }

@@ -17,7 +17,7 @@ class BaseController extends Controller {
 		if($userId!=null){
 			
 		}else{
-			$this->redirect('Login/index');
+// 			$this->redirect('Login/index');
 		}
 	}
 	
