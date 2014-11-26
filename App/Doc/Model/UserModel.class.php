@@ -9,7 +9,8 @@ class UserModel extends Model{
 			'user_name'=>$userName,
 			'password'=>$password
 		);
-		return M('User')->where($map)->find();
+		$row=M('User')->where($map)->find();
+		return $row;
 	}
 	
 }

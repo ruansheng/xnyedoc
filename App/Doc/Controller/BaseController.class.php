@@ -13,11 +13,11 @@ class BaseController extends Controller {
 	 */
 	public function __construct(){
 		parent::__construct();
-		$userId=session('user_id');
+		$userId=session('name');
 		if($userId!=null){
 			
 		}else{
-// 			$this->redirect('Login/index');
+			$this->redirect('Login/index');
 		}
 	}
 	
