@@ -66,6 +66,7 @@ class LoginController extends Controller {
 	 */
 	public function logout(){
 		session('name',null);
+		$this->redirect('Login/index');
 	}
 	
 	

@@ -9,6 +9,8 @@ CREATE TABLE `doc_project`(
 	`create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
 	`update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
 	`is_del` int(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否禁用',
+	`project_icon` varchar(200) NOT NULL DEFAULT '' COMMENT '项目图片icon',
+	`project_desc` varchar(200) NOT NULL DEFAULT '' COMMENT '项目描述',
 	PRIMARY KEY (`project_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='项目表';
 

@@ -21,4 +21,22 @@ class UserLogic extends Model{
 		}
 	}
 	
+	public function doAddUser($data){
+		$userName=$data['user_name'];
+	
+		$User=D('User','Model');
+		$userId=$User->addUser($userName);
+		if($userId){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public function getUserList(){
+		$User=D('User','Model');
+		$userList=$User->getUserList();
+		return $userList;
+	}
+	
 }

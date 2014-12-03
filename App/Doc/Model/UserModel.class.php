@@ -13,4 +13,23 @@ class UserModel extends Model{
 		return $row;
 	}
 	
+	public function addUser($userName){
+		$data=array(
+				'user_name'=>$userName
+		);
+		$flag=M('User')->add($data);
+	
+		return $flag;
+	}
+	
+	public function getUserList(){
+		$User=M('User');
+		$count = $User->count();
+		$Page = new \Think\Page($count,10);
+		$show = $Page->show();
+		// 进行分页数据查询
+		$list = $User->order('user_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+		return $list;
+	}
+	
 }
