@@ -7,15 +7,19 @@ class UserModel extends Model{
 	public function getUserInfoRow($userName,$password){
 		$map=array(
 			'user_name'=>$userName,
-			'password'=>$password
+			'password'=>$password,
 		);
 		$row=M('User')->where($map)->find();
 		return $row;
 	}
 	
-	public function addUser($userName){
+	public function addUser($userName,$password){
 		$data=array(
-				'user_name'=>$userName
+				'user_name'=>$userName,
+				'password'=>$password,
+				'create_time'=>time(),
+				'update_time'=>time(),
+				'is_del'=>0
 		);
 		$flag=M('User')->add($data);
 	

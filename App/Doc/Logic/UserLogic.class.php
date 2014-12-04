@@ -23,9 +23,10 @@ class UserLogic extends Model{
 	
 	public function doAddUser($data){
 		$userName=$data['user_name'];
+		$password=sha1($data['password'].'xnyedoc');
 	
 		$User=D('User','Model');
-		$userId=$User->addUser($userName);
+		$userId=$User->addUser($userName,$password);
 		if($userId){
 			return true;
 		}else{

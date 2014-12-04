@@ -6,7 +6,9 @@ class MethodModel extends Model{
 	
 	public function addMethod($methodName){
 		$data=array(
-			'method_name'=>$methodName
+			'method_name'=>$methodName,
+			'create_time'=>time(),
+			'update_time'=>time(),
 		);
 		$flag=M('Method')->add($data);
 		

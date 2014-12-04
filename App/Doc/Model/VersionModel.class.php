@@ -6,7 +6,9 @@ class VersionModel extends Model{
 	
 	public function addVersion($versionName){
 		$data=array(
-			'version_name'=>$versionName
+			'version_name'=>$versionName,
+			'create_time'=>time(),
+			'update_time'=>time()
 		);
 		$flag=M('Version')->add($data);
 		

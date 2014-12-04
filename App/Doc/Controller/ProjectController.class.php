@@ -28,7 +28,6 @@ class ProjectController extends Controller\BaseController {
 		if(!isset($data['project_desc'])){
 			$this->error('必须填写项目描述');
 		}
-		
 		$Project=D('Project','Logic');
 		if($Project->create($data)){
 			$projectId=$Project->doAddProject($data);

@@ -15,7 +15,7 @@ class BaseController extends Controller {
 		parent::__construct();
 		$userId=session('name');
 		if($userId!=null){
-			
+
 		}else{
 			$this->redirect('Login/index');
 		}

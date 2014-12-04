@@ -6,7 +6,10 @@ class UserGroupModel extends Model{
 	
 	public function addUserGroup($groupName){
 		$data=array(
-			'group_name'=>$groupName
+			'group_name'=>$groupName,
+			'create_time'=>time(),
+			'update_time'=>time(),
+			'is_del'=>0
 		);
 		$flag=M('UserGroup')->add($data);
 		

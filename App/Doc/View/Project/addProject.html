@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--
-        ===
-        This comment should NOT be removed.
-
-        Charisma v2.0.0
-
-        Copyright 2012-2014 Muhammad Usman
-        Licensed under the Apache License v2.0
-        http://www.apache.org/licenses/LICENSE-2.0
-
-        http://usman.it
-        http://twitter.com/halalit_usman
-        ===
-    -->
     <meta charset="utf-8">
     <title>添加项目</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,15 +21,6 @@
         <!-- left menu starts -->
         <include file="Index/left" />
         <!-- left menu ends -->
-
-        <noscript>
-            <div class="alert alert-block col-md-12">
-                <h4 class="alert-heading">Warning!</h4>
-
-                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
-                    enabled to use this site.</p>
-            </div>
-        </noscript>
 
         <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
@@ -76,7 +53,7 @@
             <div class="box-content row">
 				<!-- 表单内容 -->
 				<div class="col-md-5 center login-box"><br/>
-				<form class="form-horizontal" action="__APP__/Login/doLogin" method="post">
+				<form class="form-horizontal" action="__APP__/Project/doAddProject" method="post">
 	                <fieldset>
 	                    <div class="input-group input-group-lg">
 	                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
@@ -112,7 +89,7 @@
 
     <hr>
 <include file="Index/footer" />
-
+</div>
 <include file="Login/js" />
 
 </body>

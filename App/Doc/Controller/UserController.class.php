@@ -21,7 +21,7 @@ class UserController extends Controller\BaseController {
 	 */
 	public function doAddUser(){
 		$data=I('post.');
-		if(isset($data['user_name'])){
+		if(isset($data['user_name'])&&isset($data['password'])){
 			$User=D('User','Logic');
 			if($User->create($data)){
 				$userId=$User->doAddUser($data);
