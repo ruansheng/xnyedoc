@@ -32,4 +32,12 @@ class IndexController extends Controller\BaseController {
 		$this->display();
 	}
 	
+	/**
+	 *  底部
+	 * /index.php/Doc/Index/footer
+	 */
+	public function footer(){
+		$this->display();
+	}
+	
 }

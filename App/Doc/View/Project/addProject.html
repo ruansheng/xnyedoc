@@ -1,39 +1,119 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>添加项目</title>
-        <meta charset="utf-8"/>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <style type="text/css">
-		*{margin:0px;padding:0px;}
-		.content{width:500px;height:600px;margin:0 auto;margin-top:100px;background:#F8F8FF;}
-		#code{width:100px;height:30px;}	
+<html lang="en">
+<head>
+    <!--
+        ===
+        This comment should NOT be removed.
 
-		.left{width:150px;height:400px;background:purple;position:fixed;left:0px;top:50px;}
-		.header{width:100%;height:50px;background:black;position:fixed;left:0px;top:0px;}
-		</style>
-    </head>
-    <body class="bg">
-       <include file="Index/header" />
-		<include file="Index/left" />
-       <div class="content">
-       <form action="__APP__/Project/doAddProject" method="post" enctype="multipart/form-data" >
-			<div class="row clearfix">
-				<input type="text" placeholder="项目名" name="project_name"/>
-			</div>
-			<br/><br/>
-			<div class="row clearfix">
-				<input type="text" placeholder="项目icon地址" name="project_icon"/>
-			</div>
-			<br/><br/>
-			<div class="row clearfix">
-				<input type="text" placeholder="项目描述" name="project_desc"/>
-			</div>
-			<br/><br/>
-			<input type='submit' class="regbtn" value="添&nbsp;&nbsp;加"/>
-		</form>
-	   </div>
-	    <script src="/Public/js/jquery-2.1.1.min.js"></script>
-    </body>
+        Charisma v2.0.0
+
+        Copyright 2012-2014 Muhammad Usman
+        Licensed under the Apache License v2.0
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        http://usman.it
+        http://twitter.com/halalit_usman
+        ===
+    -->
+    <meta charset="utf-8">
+    <title>添加项目</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+   <include file="Login/css" />
+
+</head>
+
+<body>
+    <!-- topbar starts -->
+    <include file="Index/header" />
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <include file="Index/left" />
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">项目管理</a>
+        </li>
+        <li>
+            <a href="#">添加项目</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-info-sign"></i> 填写项目信息</h2>
+
+                <div class="box-icon">
+                    <a href="#" class="btn btn-setting btn-round btn-default"><i
+                            class="glyphicon glyphicon-cog"></i></a>
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                            class="glyphicon glyphicon-chevron-up"></i></a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i
+                            class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content row">
+				<!-- 表单内容 -->
+				<div class="col-md-5 center login-box"><br/>
+				<form class="form-horizontal" action="__APP__/Login/doLogin" method="post">
+	                <fieldset>
+	                    <div class="input-group input-group-lg">
+	                        <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+	                        <input type="text" class="form-control" placeholder="项目名称" name="project_name">
+	                    </div>
+	                    <div class="clearfix"></div><br><br>
+	
+	                    <div class="input-group input-group-lg">
+	                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+	                        <input type="text" class="form-control" placeholder="项目icon" name="project_icon">
+	                    </div>
+	                    <div class="clearfix"></div>
+						<br/><br/>
+						<div class="input-group input-group-lg">
+	                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+	                        <input type="text" class="form-control" placeholder="项目描述" name="project_desc">
+	                    </div>
+	                    <div class="clearfix"></div>
+	                    <p class=" col-md-5">
+	                        <button type="submit" class="btn btn-primary" style="width:306px;">添加</button>
+	                    </p><br/><br/>
+	                </fieldset>
+	            </form>
+	            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!--/row-->
+    <!-- content ends -->
+</div><!--/fluid-row-->
+
+    <hr>
+<include file="Index/footer" />
+
+<include file="Login/js" />
+
+</body>
 </html>

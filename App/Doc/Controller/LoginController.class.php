@@ -69,5 +69,20 @@ class LoginController extends Controller {
 		$this->redirect('Login/index');
 	}
 	
+	/**
+	 *  css
+	 * /index.php/Doc/Index/css
+	 */
+	public function css(){
+		$this->display();
+	}
+	
+	/**
+	 *  js
+	 * /index.php/Doc/Index/js
+	 */
+	public function js(){
+		$this->display();
+	}
 	
 }
