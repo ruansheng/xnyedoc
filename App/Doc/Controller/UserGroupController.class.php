@@ -44,9 +44,11 @@ class UserGroupController extends Controller\BaseController {
 	 */
 	public function userGroupList(){
 		$UserGroup=D('UserGroup','Logic');
-		$userGroupList=$UserGroup->getUserGroupList();
+		$list=$UserGroup->getUserGroupList();
 	
-		$this->assign('list',$userGroupList);
+		$this->assign('count',$list['count']);
+		$this->assign('pages',$list['pages']);
+		$this->assign('list',$list['list']);
 		$this->display();
 	}
 	

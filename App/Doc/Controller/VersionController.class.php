@@ -44,9 +44,11 @@ class VersionController extends Controller\BaseController {
 	 */
 	public function versionList(){
 		$Version=D('Version','Logic');
-		$versionList=$Version->getVersionList();
+		$list=$Version->getVersionList();
 	
-		$this->assign('list',$versionList);
+		$this->assign('count',$list['count']);
+		$this->assign('pages',$list['pages']);
+		$this->assign('list',$list['list']);
 		$this->display();
 	}
 	

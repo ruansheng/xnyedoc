@@ -44,9 +44,11 @@ class MethodController extends Controller\BaseController {
 	 */
 	public function methodList(){
 		$Method=D('Method','Logic');
-		$methodList=$Method->getMethodList();
+		$list=$Method->getMethodList();
 	
-		$this->assign('list',$methodList);
+		$this->assign('count',$list['count']);
+		$this->assign('pages',$list['pages']);
+		$this->assign('list',$list['list']);
 		$this->display();
 	}
 	

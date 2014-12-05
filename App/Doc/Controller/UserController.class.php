@@ -44,9 +44,11 @@ class UserController extends Controller\BaseController {
 	 */
 	public function userList(){
 		$User=D('User','Logic');
-		$userList=$User->getUserList();
-	
-		$this->assign('list',$userList);
+		$list=$User->getUserList();
+		
+		$this->assign('count',$list['count']);
+		$this->assign('pages',$list['pages']);
+		$this->assign('list',$list['list']);
 		$this->display();
 	}
 	

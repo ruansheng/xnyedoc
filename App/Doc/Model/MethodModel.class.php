@@ -22,7 +22,7 @@ class MethodModel extends Model{
 		$show = $Page->show();
 		// 进行分页数据查询
 		$list = $Method->order('method_id')->limit($Page->firstRow.','.$Page->listRows)->select();
-		return $list;
+		return array('count'=>$count,'pages'=>$show,'list'=>$list);
 	}
 	
 }

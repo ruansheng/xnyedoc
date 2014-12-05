@@ -29,11 +29,11 @@ class UserModel extends Model{
 	public function getUserList(){
 		$User=M('User');
 		$count = $User->count();
-		$Page = new \Think\Page($count,10);
+		$Page = new \Think\Page($count,25);
 		$show = $Page->show();
 		// 进行分页数据查询
 		$list = $User->order('user_id')->limit($Page->firstRow.','.$Page->listRows)->select();
-		return $list;
+		return array('count'=>$count,'pages'=>$show,'list'=>$list);
 	}
 	
 }

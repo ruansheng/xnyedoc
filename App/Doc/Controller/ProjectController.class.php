@@ -47,9 +47,11 @@ class ProjectController extends Controller\BaseController {
 	 */
 	public function projectList(){
 		$Project=D('Project','Logic');
-		$projectList=$Project->getProjectList();
+		$list=$Project->getProjectList();
 		
-		$this->assign('list',$projectList);
+		$this->assign('count',$list['count']);
+		$this->assign('pages',$list['pages']);
+		$this->assign('list',$list['list']);
 		$this->display();
 	}
 	
