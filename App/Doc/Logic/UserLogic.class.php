@@ -40,4 +40,60 @@ class UserLogic extends Model{
 		return $userList;
 	}
 	
+	/**
+	 * 获取用户
+	 * @param int $userId
+	 * @return array
+	 */
+	public function getUser($userId){
+		$User=D('User','Model');
+		$userInfo=$User->getUser($userId);
+		return $userInfo;
+	}
+	
+	/**
+	 * 修改用户
+	 * @param array $data
+	 * @return boolean
+	 */
+	public function doUpdateUser($data){
+		$User=D('User','Model');
+		$flag=$User->updateUser($data['user_id'],$data);
+		if($flag){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	/**
+	 * 解封禁用户
+	 * @param int $userId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function delUser($userId,$type){
+		$User=D('User','Model');
+		if($type==1){  //封禁
+			$flag=$User->delUser($userId,1);
+		}else if($type==2){//解封
+			$flag=$User->delUser($userId,0);
+		}
+	
+		return $flag;
+	}
+	
+	/**
+	 * 删除用户
+	 * @param int $userId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function removeUser($userId){
+		$User=D('User','Model');
+		$flag=$User->removeUser($userId);
+	
+		return $flag;
+	}
+	
 }

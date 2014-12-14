@@ -25,4 +25,56 @@ class MethodModel extends Model{
 		return array('count'=>$count,'pages'=>$show,'list'=>$list);
 	}
 	
+	/**
+	 * 获取接口方法
+	 * @param array $data
+	 * @return boolean
+	 */
+	public function getMethod($methodId){
+		$method=M('Method')->where(array('method_id'=>$methodId))->find();
+		return $method;
+	}
+	
+	/**
+	 * 修改接口方法
+	 * @param array $data
+	 * @return boolean
+	 */
+	public function updateMethod($methodId,$data){
+		$data=array(
+				'method_name'=>$data['method_name'],
+				'update_time'=>time(),
+		);
+		$flag=M('Method')->where(array('method_id'=>$methodId))->save($data);
+		return $flag;
+	}
+	
+	/**
+	 * 解封禁接口方法信息
+	 * @param int $moduleId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function delMethod($methodId,$isDel){
+		$Method=M('Method');
+		$da=array(
+				'is_del'=>$isDel,
+				'update_time'=>time()
+		);
+		$flag=$Method->where(array('method_id'=>$methodId))->save($da);
+		return $flag;
+	}
+	
+	/**
+	 * 删除接口方法信息
+	 * @param int $methodId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function removeMethod($methodId){
+		$Method=M('Method');
+		$flag=$Method->where(array('method_id'=>$methodId))->delete();
+		return $flag;
+	}
+	
 }

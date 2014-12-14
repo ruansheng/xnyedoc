@@ -61,6 +61,7 @@
 		        <th style="text-align:center;">项目名称</th>
 		        <th style="text-align:center;">创建时间</th>
 		        <th style="text-align:center;">修改时间</th>
+		        <th style="text-align:center;">状态</th>
 		        <th style="text-align:center;">操作</th>
 		    </tr>
 	    </thead>
@@ -68,18 +69,31 @@
 	    			<volist name="list" id="vi">
 				    <tr>
 				        <td>{$vi.project_id}</td>
-				        <td class="center"><img style="width:50px;height:50px;" src="http://a.hiphotos.baidu.com/image/h%3D360/sign=8a8e882c718da977512f802d8051f872/91529822720e0cf317d405e40846f21fbe09aa8a.jpg"/></td>
-				        <td class="center">{$vi.project_name}</td>
-				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['create_time']);</php></td>
-				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['update_time']);</php></td>
+				        <td><img style="width:50px;height:50px;" src="http://a.hiphotos.baidu.com/image/h%3D360/sign=8a8e882c718da977512f802d8051f872/91529822720e0cf317d405e40846f21fbe09aa8a.jpg"/></td>
+				        <td>{$vi.project_name}</td>
+				        <td><php>echo date('Y-m-d H:i:s',$vi['create_time']);</php></td>
+				        <td><php>echo date('Y-m-d H:i:s',$vi['update_time']);</php></td>
 				        <td>
-					           <a class="btn btn-success" href="#">
-					                <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看
-					            </a>
-					            <a class="btn btn-info" href="#">
+				        		<if condition="$vi.is_del eq 0">	
+				        		<span class="label-success label label-default">正常</span>
+					        <elseif condition="$vi.is_del eq 1" />
+					        		<span class="label-warning label label-default">封禁</span>
+					        	</if>
+				        </td>
+				        <td>
+					            <a class="btn btn-info" href="__APP__/Project/updateProject/project_id/{$vi.project_id}">
 					                <i class="glyphicon glyphicon-edit icon-white"></i>编辑
 					            </a>
-					            <a class="btn btn-danger" href="#">
+					            <if condition="$vi.is_del eq 0">
+						            <a class="btn btn-warning delProject" href="javascript:void(0);" type="1" project_id="{$vi.project_id}" url="/index.php/Project/delProject">
+						                <i class="glyphicon glyphicon-remove icon-white"></i>封禁
+						            </a>
+					            <else />
+						            <a class="btn btn-warning delProject" href="javascript:void(0);" type="2" project_id="{$vi.project_id}" url="/index.php/Project/delProject">
+						                <i class="glyphicon glyphicon-ok icon-white"></i>解封
+						            </a>
+					            </if>
+					            <a class="btn btn-danger removeProject" href="javascript:void(0);" project_id="{$vi.project_id}" url="/index.php/Project/removeProject">
 					                <i class="glyphicon glyphicon-trash icon-white"></i>删除
 					            </a>
 				        </td>
@@ -106,5 +120,44 @@
 
 <include file="Login/js" />
 
+<script type="text/javascript">
+	$(function(){
+
+		$('.delProject').on('click',function(){
+			var url=$(this).attr('url');
+			var type=$(this).attr('type');
+			var project_id=$(this).attr('project_id');
+			$.post(url,{'type':type,'project_id':project_id},function(data){
+				var json=eval("("+data+")");
+				if(json.status==-1){
+					alert(json.msg);
+				}else{
+					alert(json.msg);
+					location.reload(); 
+				}
+			});
+		});
+		
+		$('.removeProject').on('click',function(){
+			var url=$(this).attr('url');
+			var project_id=$(this).attr('project_id');
+			var s=confirm('确定删除?');	
+			if(s){
+				$.post(url,{'project_id':project_id},function(data){
+					var json=eval("("+data+")");
+					if(json.status==-1){
+						alert(json.msg);
+					}else{
+						alert(json.msg);
+						location.reload(); 
+					}
+				});
+			}	
+		});
+		
+	});
+	
+	
+</script>
 </body>
 </html>

@@ -17,6 +17,14 @@ class IndexController extends Controller\BaseController {
 	}
 	
 	/**
+	 *  uedit
+	 * /index.php/Doc/Index/uedit
+	 */
+	public function uedit(){
+		$this->display();
+	}
+	
+	/**
 	 *  主面板
 	 * /index.php/Doc/Index/index
 	 */

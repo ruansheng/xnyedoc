@@ -36,4 +36,64 @@ class UserModel extends Model{
 		return array('count'=>$count,'pages'=>$show,'list'=>$list);
 	}
 	
+	/**
+	 * 获取用户
+	 * @param array $data
+	 * @return boolean
+	 */
+	public function getUser($userId){
+		$userInfo=M('User')->where(array('user_id'=>$userId))->find();
+		return $userInfo;
+	}
+	
+	/**
+	 * 修改用户
+	 * @param array $data
+	 * @return boolean
+	 */
+	public function updateUser($userId,$data){
+		if($data['password']){
+			$data=array(
+					'user_name'=>$data['user_name'],
+					'password'=>sha1($data['password'].'xnyedoc'),
+					'update_time'=>time(),
+			);
+		}else{
+			$data=array(
+					'user_name'=>$data['user_name'],
+					'update_time'=>time(),
+			);
+		}
+		$flag=M('User')->where(array('user_id'=>$userId))->save($data);
+		return $flag;
+	}
+	
+	/**
+	 * 解封禁用户信息
+	 * @param int $userId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function delUser($userId,$isDel){
+		$User=M('User');
+		$da=array(
+				'is_del'=>$isDel,
+				'update_time'=>time()
+		);
+		$flag=$User->where(array('user_id'=>$userId))->save($da);
+		return $flag;
+	}
+	
+	/**
+	 * 删除用户信息
+	 * @param int $userId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function removeUser($userId){
+		$User=M('User');
+		$flag=$User->where(array('user_id'=>$userId))->delete();
+		return $flag;
+	}
+	
 }

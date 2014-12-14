@@ -92,4 +92,73 @@ class ProjectController extends Controller\BaseController {
 			$this->error('错误');
 		}
 	}
+	
+	/**
+	 *  解封禁项目
+	 * /index.php/Doc/Project/delProject
+	 * @author ruansheng
+	 */
+	public function delProject(){
+		$data=I('post.');
+	
+		if(($data['project_id']==0)||($data['type']==0)){
+			$result=array(
+					'status'=>-1,
+					'msg'=>'不能为空'
+			);
+			exit(json_encode($result));
+		}
+	
+		$Project=D('Project','Logic');
+		$flag=$Project->delProject($data['project_id'],$data['type']);
+	
+		if($flag){
+			$result=array(
+					'status'=>0,
+					'msg'=>'成功'
+			);
+			exit(json_encode($result));
+		}else{
+			$result=array(
+					'status'=>-1,
+					'msg'=>'封禁失败'
+			);
+			exit(json_encode($result));
+		}
+	}
+	
+	/**
+	 *  删除项目
+	 * /index.php/Doc/Project/removeProject
+	 * @author ruansheng
+	 */
+	public function removeProject(){
+		$data=I('post.');
+	
+		if(($data['project_id']==0)){
+			$result=array(
+					'status'=>-1,
+					'msg'=>'不能为空'
+			);
+			exit(json_encode($result));
+		}
+	
+		$Project=D('Project','Logic');
+		$flag=$Project->removeProject($data['project_id']);
+	
+		if($flag){
+			$result=array(
+					'status'=>0,
+					'msg'=>'删除成功'
+			);
+			exit(json_encode($result));
+		}else{
+			$result=array(
+					'status'=>-1,
+					'msg'=>'删除失败'
+			);
+			exit(json_encode($result));
+		}
+	}
+	
 }

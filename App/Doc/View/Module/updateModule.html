@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>修改模块</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+   <include file="Login/css" />
+
+</head>
+
+<body>
+    <!-- topbar starts -->
+    <include file="Index/header" />
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <include file="Index/left" />
+        <!-- left menu ends -->
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/index.php/Project/updateProject">模块管理</a>
+        </li>
+        <li>
+            <a href="/index.php/Project/updateProject">修改模块</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-list-alt"></i> 修改模块信息</h2>
+
+                <div class="box-icon">
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                            class="glyphicon glyphicon-chevron-up"></i></a>
+                </div>
+            </div>
+            <div class="box-content row">
+				<!-- 表单内容 -->
+				<div class="col-md-5 center login-box"><br/>
+				<form class="form-horizontal" action="__APP__/Module/doUpdateModule" method="post">
+	                <fieldset>
+	                		<input type="hidden" value="{$item.module_id}" name="module_id"/>
+	                    <div class="input-group input-group-lg">
+	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
+	                        <input type="text" class="form-control" placeholder="模块名称" value="{$item.module_name}" name="module_name">
+	                    </div>
+	                    <div class="clearfix"></div><br><br>
+	
+	                    <p class=" col-md-5">
+	                        <button type="submit" class="btn btn-primary" style="width:306px;">修改</button>
+	                    </p><br/><br/>
+	                </fieldset>
+	            </form>
+	            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!--/row-->
+    <!-- content ends -->
+</div><!--/fluid-row-->
+
+    <hr>
+<include file="Index/footer" />
+</div>
+<include file="Login/js" />
+
+</body>
+</html>

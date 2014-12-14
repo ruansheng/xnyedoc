@@ -63,4 +63,33 @@ class ProjectModel extends Model{
 	
 		return $flag;
 	}
+	
+	/**
+	 * 解封禁项目信息
+	 * @param int $projectId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function delProject($projectId,$isDel){
+		$Project=M('Project');
+		$da=array(
+				'is_del'=>$isDel,
+				'update_time'=>time()
+		);
+		$flag=$Project->where(array('project_id'=>$projectId))->save($da);
+		return $flag;
+	}
+	
+	/**
+	 * 删除项目信息
+	 * @param int $projectId
+	 * @return boolean
+	 * @author ruansheng
+	 */
+	public function removeProject($projectId){
+		$Project=M('Project');
+		$flag=$Project->where(array('project_id'=>$projectId))->delete();
+		return $flag;
+	}
+	
 }

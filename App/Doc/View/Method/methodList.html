@@ -60,6 +60,7 @@
 		        <th style="text-align:center;">方法名称</th>
 		        <th style="text-align:center;">创建时间</th>
 		        <th style="text-align:center;">修改时间</th>
+		        <th style="text-align:center;">状态</th>
 		        <th style="text-align:center;">操作</th>
 		    </tr>
 	    </thead>
@@ -71,13 +72,26 @@
 				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['create_time']);</php></td>
 				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['update_time']);</php></td>
 				        <td>
-					           <a class="btn btn-success" href="#">
-					                <i class="glyphicon glyphicon-zoom-in icon-white"></i>查看
-					            </a>
-					            <a class="btn btn-info" href="#">
+				        		<if condition="$vi.is_del eq 0">	
+				        		<span class="label-success label label-default">正常</span>
+					        <elseif condition="$vi.is_del eq 1" />
+					        		<span class="label-warning label label-default">封禁</span>
+					        	</if>
+				        </td>
+				        <td>
+					           <a class="btn btn-info" href="__APP__/Method/updateMethod/method_id/{$vi.method_id}">
 					                <i class="glyphicon glyphicon-edit icon-white"></i>编辑
 					            </a>
-					            <a class="btn btn-danger" href="#">
+					            <if condition="$vi.is_del eq 0">
+						            <a class="btn btn-warning delMethod" href="javascript:void(0);" type="1" method_id="{$vi.method_id}" url="/index.php/Method/delMethod">
+						                <i class="glyphicon glyphicon-remove icon-white"></i>封禁
+						            </a>
+					            <else />
+						            <a class="btn btn-warning delMethod" href="javascript:void(0);" type="2" method_id="{$vi.method_id}" url="/index.php/Method/delMethod">
+						                <i class="glyphicon glyphicon-ok icon-white"></i>解封
+						            </a>
+					            </if>
+					            <a class="btn btn-danger removeMethod" href="javascript:void(0);" method_id="{$vi.method_id}" url="/index.php/Method/removeMethod">
 					                <i class="glyphicon glyphicon-trash icon-white"></i>删除
 					            </a>
 				        </td>
@@ -103,6 +117,44 @@
 </div><!--/.fluid-container-->
 
 <include file="Login/js" />
+<script type="text/javascript">
+	$(function(){
 
+		$('.delMethod').on('click',function(){
+			var url=$(this).attr('url');
+			var type=$(this).attr('type');
+			var method_id=$(this).attr('method_id');
+			$.post(url,{'type':type,'method_id':method_id},function(data){
+				var json=eval("("+data+")");
+				if(json.status==-1){
+					alert(json.msg);
+				}else{
+					alert(json.msg);
+					location.reload(); 
+				}
+			});
+		});
+		
+		$('.removeMethod').on('click',function(){
+			var url=$(this).attr('url');
+			var method_id=$(this).attr('method_id');
+			var s=confirm('确定删除?');	
+			if(s){
+				$.post(url,{'method_id':method_id},function(data){
+					var json=eval("("+data+")");
+					if(json.status==-1){
+						alert(json.msg);
+					}else{
+						alert(json.msg);
+						location.reload(); 
+					}
+				});
+			}	
+		});
+		
+	});
+	
+	
+</script>
 </body>
 </html>

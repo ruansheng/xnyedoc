@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>模块列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+    <include file="Login/css" />
+
+</head>
+<body>
+
+    <include file="Index/header" />
+    
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <include file="Index/left" />
+        <!-- left menu ends -->
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+         <ul class="breadcrumb">
+            <li>
+                <a href="/index.php/Project/projectList">模块管理</a>
+            </li>
+            <li>
+                <a href="/index.php/Project/projectList">模块列表</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+    <div class="box col-md-12">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-list-alt"></i> 模块列表</h2>
+        <div class="box-icon">
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+    <span class="label-warning label label-default">模块总数 : {$count}</span>
+    <span class="label-warning label label-default">每页显示25条</span>
+    <span class="label-warning label label-default">总共<php>echo ceil($count/50);</php>页</span>
+    <br/><br/>
+    {$pages}
+    <br/>
+    <table class="table table-striped table-bordered bootstrap-datatable responsive">
+	    <thead>
+		    <tr>
+		        <th style="text-align:center;">模块id</th>
+		        <th style="text-align:center;">模块名称</th>
+		        <th style="text-align:center;">创建时间</th>
+		        <th style="text-align:center;">修改时间</th>
+		        <th style="text-align:center;">状态</th>
+		        <th style="text-align:center;">操作</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+	    			<volist name="list" id="vi">
+				    <tr>
+				        <td>{$vi.module_id}</td>
+				        <td class="center">{$vi.module_name}</td>
+				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['create_time']);</php></td>
+				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['update_time']);</php></td>
+				        <td>
+				        		<if condition="$vi.is_del eq 0">	
+				        		<span class="label-success label label-default">正常</span>
+					        <elseif condition="$vi.is_del eq 1" />
+					        		<span class="label-warning label label-default">封禁</span>
+					        	</if>
+				        </td>
+				        <td>
+					         <a class="btn btn-info" href="__APP__/Module/updateModule/module_id/{$vi.module_id}">
+					                <i class="glyphicon glyphicon-edit icon-white"></i>编辑
+					            </a>
+					            <if condition="$vi.is_del eq 0">
+						            <a class="btn btn-warning delModule" href="javascript:void(0);" type="1" module_id="{$vi.module_id}" url="/index.php/Module/delModule">
+						                <i class="glyphicon glyphicon-remove icon-white"></i>封禁
+						            </a>
+					            <else />
+						            <a class="btn btn-warning delModule" href="javascript:void(0);" type="2" module_id="{$vi.module_id}" url="/index.php/Module/delModule">
+						                <i class="glyphicon glyphicon-ok icon-white"></i>解封
+						            </a>
+					            </if>
+					            <a class="btn btn-danger removeModule" href="javascript:void(0);" module_id="{$vi.module_id}" url="/index.php/Module/removeModule">
+					                <i class="glyphicon glyphicon-trash icon-white"></i>删除
+					            </a>
+				        </td>
+				    </tr>
+	    			</volist>
+    		</tbody>
+    </table>
+    {$pages}
+    </div>
+    </div>
+    </div>
+
+    </div><!--/row-->
+
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+    <hr>
+
+    <include file="Index/footer" />
+
+</div><!--/.fluid-container-->
+
+<include file="Login/js" />
+<script type="text/javascript">
+	$(function(){
+
+		$('.delModule').on('click',function(){
+			var url=$(this).attr('url');
+			var type=$(this).attr('type');
+			var module_id=$(this).attr('module_id');
+			$.post(url,{'type':type,'module_id':module_id},function(data){
+				var json=eval("("+data+")");
+				if(json.status==-1){
+					alert(json.msg);
+				}else{
+					alert(json.msg);
+					location.reload(); 
+				}
+			});
+		});
+		
+		$('.removeModule').on('click',function(){
+			var url=$(this).attr('url');
+			var module_id=$(this).attr('module_id');
+			var s=confirm('确定删除?');	
+			if(s){
+				$.post(url,{'module_id':module_id},function(data){
+					var json=eval("("+data+")");
+					if(json.status==-1){
+						alert(json.msg);
+					}else{
+						alert(json.msg);
+						location.reload(); 
+					}
+				});
+			}	
+		});
+		
+	});
+	
+	
+</script>
+</body>
+</html>
