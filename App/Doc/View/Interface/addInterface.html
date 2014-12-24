@@ -51,11 +51,10 @@
 				<div class="col-md-5 login-box"><br/>
 				<form class="form-horizontal" action="__APP__/Interface/doAddInterface" method="post">
 	                <fieldset>
-	                    <div class="input-group input-group-lg">
-	                        <span class="input-group-addon"></span>
-	                        <input type="text" class="form-control" placeholder="接口名称" name="interface_name">
-	                    </div>
-	                    <div class="clearfix"></div><br><br>
+	                     <div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" placeholder="接口名称" name="interface_name">
+                			</div>
+	                    <div class="clearfix"></div><br>
 	                    <select class="form-control input-lg" name="project_id">
 		                    <volist name="projectList" id="vi">		
 		                    		<option value="{$vi.project_id}">{$vi.project_name}</option>

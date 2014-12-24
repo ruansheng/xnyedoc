@@ -13,6 +13,10 @@ class ModuleController extends Controller\BaseController {
 	 * /index.php/Doc/Module/addModule
 	 */
 	public function addModule(){
+		//获取项目列表
+		$projectList=D('Project','Logic')->getProjectList();
+		
+		$this->assign('projectList',$projectList['list']);
 		$this->display();
 	}
 	
@@ -21,7 +25,7 @@ class ModuleController extends Controller\BaseController {
 	 */
 	public function doAddModule(){
 		$data=I('post.');
-		if(!isset($data['module_name'])){
+		if(!isset($data['module_name'])||!isset($data['project_id'])){
 			$this->error('必须填写模块名称');
 		}
 		
@@ -46,6 +50,18 @@ class ModuleController extends Controller\BaseController {
 		$Module=D('Module','Logic');
 		$list=$Module->getModuleList();
 		
+		//获取项目列表
+		$Project=D('Project','Logic');
+		$projectList=$Project->getProjectList();
+		
+		foreach($list['list'] as &$v){
+			foreach($projectList['list'] as $vi){
+				if($v['project_id']==$vi['project_id']){
+					$v['project_name']=$vi['project_name'];
+				}
+			}
+		}
+		
 		$this->assign('count',$list['count']);
 		$this->assign('pages',$list['pages']);
 		$this->assign('list',$list['list']);
@@ -60,6 +76,12 @@ class ModuleController extends Controller\BaseController {
 		$moduleId=I('get.module_id');
 		$Module=D('Module','Logic');
 		$module=$Module->getModule($moduleId);
+		
+		//获取项目列表
+		$Project=D('Project','Logic');
+		$projectList=$Project->getProjectList();
+		
+		$this->assign('projectList',$projectList['list']);
 		$this->assign('item',$module);
 		$this->display();
 	}

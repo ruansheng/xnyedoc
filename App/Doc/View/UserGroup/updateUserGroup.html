@@ -52,11 +52,11 @@
 				<form class="form-horizontal" action="__APP__/UserGroup/doUpdateUserGroup" method="post">
 	                <fieldset>
 	                		<input type="hidden" value="{$item.group_id}" name="group_id"/>
-	                    <div class="input-group input-group-lg">
-	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
-	                        <input type="text" class="form-control" placeholder="用户组名称" value="{$item.group_name}" name="group_name">
-	                    </div>
-	                    <div class="clearfix"></div><br><br>
+	                    
+	                    <div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" value="{$item.group_name}" placeholder="用户组名称" name="group_name">
+                			</div>
+	                    <div class="clearfix"></div><br>
 	
 	                    <p class=" col-md-5">
 	                        <button type="submit" class="btn btn-primary" style="width:306px;">修改</button>

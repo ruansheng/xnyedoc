@@ -52,11 +52,20 @@
 				<form class="form-horizontal" action="__APP__/Module/doUpdateModule" method="post">
 	                <fieldset>
 	                		<input type="hidden" value="{$item.module_id}" name="module_id"/>
-	                    <div class="input-group input-group-lg">
-	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
-	                        <input type="text" class="form-control" placeholder="模块名称" value="{$item.module_name}" name="module_name">
-	                    </div>
-	                    <div class="clearfix"></div><br><br>
+	                    <select class="form-control input-lg" name="project_id">
+		                    <volist name="projectList" id="vi">
+		                    		<if condition="$item.project_id eq $vi.project_id">		
+		                    			<option value="{$vi.project_id}" selected>{$vi.project_name}</option>
+								<else />
+									<option value="{$vi.project_id}">{$vi.project_name}</option>
+		                    	    </if>
+		                    </volist>
+	                    </select>
+	                    <div class="clearfix"></div><br>
+	                    <div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" value="{$item.module_name}" placeholder="模块名称" name="module_name">
+                			</div>
+	                    <div class="clearfix"></div><br>
 	
 	                    <p class=" col-md-5">
 	                        <button type="submit" class="btn btn-primary" style="width:306px;">修改</button>

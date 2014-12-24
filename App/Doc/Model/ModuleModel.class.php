@@ -16,6 +16,7 @@ class ModuleModel extends Model{
 	public function addModule($data){
 		$data=array(
 			'module_name'=>$data['module_name'],
+			'project_id'=>$data['project_id'],
 			'create_time'=>time(),
 			'update_time'=>time(),
 			'is_del'=>0

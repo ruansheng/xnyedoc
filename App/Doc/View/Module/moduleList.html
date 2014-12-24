@@ -57,6 +57,7 @@
 		    <tr>
 		        <th style="text-align:center;">模块id</th>
 		        <th style="text-align:center;">模块名称</th>
+		        <th style="text-align:center;">项目名称</th>
 		        <th style="text-align:center;">创建时间</th>
 		        <th style="text-align:center;">修改时间</th>
 		        <th style="text-align:center;">状态</th>
@@ -68,6 +69,7 @@
 				    <tr>
 				        <td>{$vi.module_id}</td>
 				        <td class="center">{$vi.module_name}</td>
+				        <td class="center">{$vi.project_name}</td>
 				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['create_time']);</php></td>
 				        <td class="center"><php>echo date('Y-m-d H:i:s',$vi['update_time']);</php></td>
 				        <td>

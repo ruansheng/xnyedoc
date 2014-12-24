@@ -52,22 +52,18 @@
 				<form class="form-horizontal" action="__APP__/Project/doUpdateProject" method="post">
 	                <fieldset>
 	                		<input type="hidden" value="{$item.project_id}" name="project_id"/>
-	                    <div class="input-group input-group-lg">
-	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
-	                        <input type="text" class="form-control" placeholder="项目名称" value="{$item.project_name}" name="project_name">
-	                    </div>
-	                    <div class="clearfix"></div><br><br>
-	
-	                    <div class="input-group input-group-lg">
-	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
-	                        <input type="text" class="form-control" placeholder="项目icon" value="{$item.project_icon}" name="project_icon">
-	                    </div>
-	                    <div class="clearfix"></div>
-						<br/><br/>
-						<div class="input-group input-group-lg">
-	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
-	                        <input type="text" class="form-control" placeholder="项目描述" value="{$item.project_desc}" name="project_desc">
-	                    </div>
+	                    <div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" value="{$item.project_name}" placeholder="项目名称" name="project_name">
+                			</div>
+	                    <div class="clearfix"></div><br>
+						<div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" value="{$item.project_icon}" placeholder="项目icon" name="project_icon">
+                			</div>
+	                    <div class="clearfix"></div><br/>
+						<div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" value="{$item.project_desc}" placeholder="项目描述" name="project_desc">
+                			</div>
+	                    
 	                    <div class="clearfix"></div>
 	                    <p class=" col-md-5">
 	                        <button type="submit" class="btn btn-primary" style="width:306px;">修改</button>

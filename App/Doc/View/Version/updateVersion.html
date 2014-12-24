@@ -52,11 +52,10 @@
 				<form class="form-horizontal" action="__APP__/Version/doUpdateVersion" method="post">
 	                <fieldset>
 	                		<input type="hidden" name="version_id" value="{$item.version_id}"/>
-	                    <div class="input-group input-group-lg">
-	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
-	                        <input type="text" class="form-control" placeholder="版本名称" value="{$item.version_name}" name="version_name">
-	                    </div>
-	                    <div class="clearfix"></div><br><br>
+	                    <div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" value="{$item.version_name}" placeholder="版本名称" name="version_name">
+                			</div>
+	                    <div class="clearfix"></div><br>
 	
 	                    <p class=" col-md-5">
 	                        <button type="submit" class="btn btn-primary" style="width:306px;">修改</button>

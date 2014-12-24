@@ -8,4 +8,5 @@ return array(
 	'DB_PWD'                =>  '19900918',          // 密码
 	'DB_PORT'               =>  '3306',        // 端口
 	'DB_PREFIX'             =>  'doc_',    // 数据库表前缀
+
 );

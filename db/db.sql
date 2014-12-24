@@ -42,6 +42,7 @@ DROP TABLE IF EXISTS `doc_module`;
 CREATE TABLE `doc_module`(
 	`module_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '模块id',
 	`module_name` varchar(20) NOT NULL DEFAULT '' COMMENT '模块名称',
+	`project_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '项目id',
 	`create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
 	`update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
 	`is_del` int(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否禁用',

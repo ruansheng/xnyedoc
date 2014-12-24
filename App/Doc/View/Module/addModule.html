@@ -51,10 +51,15 @@
 				<div class="col-md-5 center login-box"><br/>
 				<form class="form-horizontal" action="__APP__/Module/doAddModule" method="post">
 	                <fieldset>
-	                    <div class="input-group input-group-lg">
-	                        <span class="input-group-addon"><i class="glyphicon red"></i></span>
-	                        <input type="text" class="form-control" placeholder="模块名称" name="module_name">
-	                    </div>
+	                    <select class="form-control input-lg" name="project_id">
+		                    <volist name="projectList" id="vi">		
+		                    		<option value="{$vi.project_id}">{$vi.project_name}</option>
+		                    </volist>
+	                    </select>
+	                    <div class="clearfix"></div><br><br>
+	                     <div class="form-group has-success col-md-4 input-group-lg">
+		                    <input type="text" class="form-control" id="inputSuccess1" style="width:333px;" placeholder="模块名称" name="module_name">
+                			</div>
 	                    <div class="clearfix"></div><br><br>
 	
 	                    <p class=" col-md-5">
